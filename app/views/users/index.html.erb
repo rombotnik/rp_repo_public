@@ -1,0 +1,44 @@
+<div class="row mb-3">
+  <div class="col">
+    <h1>Users</h1>
+  </div>
+  <div class="col text-right">
+    <p><%= link_to 'New user', new_user_path, class: 'btn btn-primary' %></p>
+  </div>
+</div>
+<table class="table js-dataTable">
+  <thead>
+    <tr>
+      <th>Modified</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td data-sort="<%= user.updated_at %>" class="text-muted">
+          <%= time_ago_in_words(user.updated_at) %> ago
+        </td>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
+        <td>
+          <ul class="list-inline">
+            <li class="list-inline-item"><%= link_to edit_user_path(user) do %><%= icon('edit') %><% end %></li>
+            <li class="list-inline-item">
+              <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= icon('trash') %>
+              <% end %>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,42 @@
+<div class="row mb-3">
+  <div class="col">
+    <h1>Genres</h1>
+  </div>
+  <div class="col text-right">
+    <p><%= link_to 'New genre', new_genre_path, class: 'btn btn-primary' %></p>
+  </div>
+</div>
+<table class="table js-dataTable">
+  <thead>
+    <tr>
+      <th>Modified</th>
+      <th>Name</th>
+      <th>Stories</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td data-sort="<%= genre.updated_at %>" class="text-muted">
+          <%= time_ago_in_words(genre.updated_at) %> ago
+        </td>
+        <td>
+          <%= genre.name %>
+        </td>
+        <td><%= genre.stories.count %></td>
+        <td>
+          <ul class="list-inline">
+            <li class="list-inline-item"><%= link_to edit_genre_path(genre) do %><%= icon('edit') %><% end %></li>
+            <li class="list-inline-item">
+              <%= link_to genre, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= icon('trash') %>
+              <% end %>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

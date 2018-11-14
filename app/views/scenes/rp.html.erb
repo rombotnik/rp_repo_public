@@ -1,0 +1,48 @@
+<div class="row rp-window-header">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <nav class="nav breadcrumb breadcrumb_slim">
+      <%= link_to root_path do %>
+        <%= image_tag 'dragon', class: 'mr-3', height: '30px', style: 'margin-top: 12px' %>
+      <% end %>
+      <%= link_to @scene.story, @scene.story, class: 'breadcrumb-item pt-3 pb-3' %>
+      <span class="breadcrumb-item pt-3 pb-3 active"><%= @scene.title %></span>
+    </nav>
+  </div>
+</div>
+
+<div class="row bg-faded" style="flex: 1;">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <div id="roleplayWindow" class="rp-window" data-scene-id="<%= @scene.id %>" data-user-id="<%= current_user.id %>">
+      <% @scene.posts.each do |post| %>
+        <%= render 'posts/post', post: post, include_wrapper: true %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row bg-faded">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <div class="rp-window-typing-state js-rp-typing-state small text-muted"></div>
+  </div>
+</div>
+
+<div class="rp-window-footer row">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <%= simple_form_for @post, url: '#' do |f| %>
+      <%= f.hidden_field :id %>
+      <%= f.trix_editor :body, spellcheck: 'false' %>
+      <div class="mt-2 text-right">
+        <%= link_to '#', class: 'mr-2 js-rp-cancel', style: 'display:none' do %><small>Cancel editing</small><% end %>
+        <%= f.submit "Post", id: 'post_submit', data: { disable_with: false }, class: 'btn btn-primary', style: 'display:none;' %>
+      </div>
+      <div class="row small text-muted">
+        <div class="col js-rp-cancel-text rp-help-text">
+          <strong>Esc</strong> to cancel editing
+        </div>
+        <div class="col text-right js-rp-submit-text rp-help-text">
+          <strong>&#8984;/Ctrl+Enter</strong> to post
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

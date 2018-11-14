@@ -1,0 +1,13 @@
+<h3 class="mb-4">Stories</h3>
+<ul class="list-group">
+  <% if stories.count == 0 %>
+    <li class="list-group-item">
+      No stories yet.&nbsp;<%= link_to 'Add a new story', new_story_path %>
+    </li>
+  <% end %>
+  <% stories.each do |story| %>
+    <li class="list-group-item">
+      <%= link_to story, story %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col mb-3">
+    <h3>Notes</h3>
+  </div>
+  <div class="col text-right">
+    <p><%= link_to 'New note', [:new, resource, :note], class: 'btn btn-primary' %></p>
+  </div>
+</div>
+
+<ul class="list-group">
+  <% if notes.count == 0 %>
+    <li class="list-group-item">
+      No notes yet.&nbsp;<%= link_to 'Add a new note', [:new, resource, :note] %>
+    </li>
+  <% end %>
+  <% notes.each do |note| %>
+    <li class="list-group-item flex-row">
+      <div class="col pl-0">
+        <%= link_to note.title, [resource, note] %>
+      </div>
+      <div>
+        <ul class="list-inline">
+          <li class="list-inline-item"><%= link_to [:edit, resource, note] do %><%= icon('edit') %><% end %></li>
+          <li class="list-inline-item">
+            <%= link_to [resource, note], method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= icon('trash') %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+</ul>

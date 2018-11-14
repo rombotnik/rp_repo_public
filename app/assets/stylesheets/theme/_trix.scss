@@ -1,0 +1,106 @@
+// Overrides
+
+trix-editor {
+  border: 1px solid $input-border-color;
+  border-radius: 0;
+  color: $input-color;
+
+  line-height: 1.35;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+trix-editor:focus {
+  border-color: $input-border-focus;
+}
+
+trix-toolbar .button_group {
+  border-color: $input-border-color;
+  border-top-color: $input-border-color;
+  border-bottom-color: $input-border-color;
+  border-radius: 0;
+}
+
+trix-toolbar .button_group button {
+  border-bottom-width: 0;
+  color: $input-color;
+}
+
+trix-toolbar .button_group button:not(:first-child) {
+  border-left-color: $input-border-color;
+}
+
+trix-toolbar .button_group button.icon, trix-toolbar .button_group input[type=button].icon {
+  text-indent: 0;
+  color: transparent;
+  -webkit-user-select: none;
+}
+
+trix-toolbar .button_group button.icon::before {
+  background-image: none !important;
+  position: absolute;
+  content: "\f087";
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  color: #FFF;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1px;
+}
+
+trix-toolbar .button_group button.icon.active::before {
+  top: 0;
+}
+
+trix-toolbar .button_group button.icon::after {
+}
+
+trix-toolbar .button_group button.active, trix-toolbar .button_group input[type=button].active {
+  background-color: transparent;
+  border: 1px solid $input-border-focus;
+}
+
+// Icons
+
+$icon-bold: '\f032';
+$icon-italic: '\f033';
+$icon-strike: '\f0cc';
+$icon-link: '\f0c1';
+
+$icon-heading-1: '\f1dc';
+$icon-quote: '\f10e';
+$icon-code: '\f121';
+$icon-list-bullets: '\f0ca';
+$icon-list-numbers: '\f0cb';
+$icon-nesting-level-decrease: '\f03b';
+$icon-nesting-level-increase: '\f03c';
+$icon-remove: svgo-data-uri('trix/images/remove.svg'); //?
+
+$icon-undo: '\f0e2';
+$icon-redo: '\f01e';
+
+trix-toolbar .button_group {
+  button.icon.bold::before { content: $icon-bold; }
+  button.icon.italic::before { content: $icon-italic; }
+  button.icon.strike::before { content: $icon-strike; }
+  button.icon.link::before { content: $icon-link; }
+
+  button.icon.heading-1::before { content: $icon-heading-1; }
+  button.icon.quote::before { content: $icon-quote; }
+  button.icon.code::before { content: $icon-code; }
+  button.icon.list.bullets::before { content: $icon-list-bullets; }
+  button.icon.list.numbers::before { content: $icon-list-numbers; }
+  button.icon.nesting-level.decrease::before { content: $icon-nesting-level-decrease; }
+  button.icon.nesting-level.increase::before { content: $icon-nesting-level-increase; }
+
+  button.icon.undo::before { content: $icon-undo; }
+  button.icon.redo::before { content: $icon-redo; }
+}
+
+// Disabled / Error
+
+trix-editor.disabled {
+  background-color: rgba(255,255,255,.25);
+}

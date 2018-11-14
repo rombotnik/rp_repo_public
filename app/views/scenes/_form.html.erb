@@ -1,0 +1,15 @@
+<%= simple_form_for [@story, @scene] do |f| %>
+  <div class="row">
+    <div class="col">
+      <%= f.input :title %>
+      <%= f.input :tag_list, input_html: { value: @scene.tag_list.join(', ') }, hint: 'Enter a list of tags separated by commas' %>
+    </div>
+    <div class="col">
+      <%= f.input :order, hint: 'Number indicating the scene\'s position' %>
+    </div>
+  </div>
+  <ul class="list-inline text-right">
+    <li class="list-inline-item"><%= link_to 'Cancel', 'javascript:history.back()', class: 'mr-2' %></li>
+    <li class="list-inline-item"><%= f.submit class: 'btn btn-primary' %></li>
+  </ul>
+<% end %>

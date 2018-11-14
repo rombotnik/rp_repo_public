@@ -1,0 +1,41 @@
+<div class="row mb-3">
+  <div class="col">
+    <h1>Ideas</h1>
+  </div>
+  <div class="col text-right">
+    <p><%= link_to 'New idea', [:new, :idea], class: 'btn btn-primary' %></p>
+  </div>
+</div>
+
+<table class="table js-dataTable">
+  <thead>
+    <tr>
+      <th>Modified</th>
+      <th>Idea</th>
+      <th>User</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ideas.each do |idea| %>
+      <tr>
+        <td data-sort="<%= idea.updated_at %>" class="text-muted">
+          <%= time_ago_in_words(idea.updated_at) %> ago
+        </td>
+        <td class="quarantine">
+          <%= sanitize idea.body %>
+        </td>
+        <td>
+          <%= idea.user %>
+        </td>
+        <td>
+          <ul class="list-inline">
+            <li class="list-inline-item"><%= link_to [:edit, idea] do %><%= icon('edit') %><% end %></li>
+            <li class="list-inline-item"><%= link_to idea, method: :delete, data: { confirm: 'Are you sure?' } do %><%= icon('trash') %><% end %></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

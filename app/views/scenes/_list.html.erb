@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col mb-3">
+    <h3>Scenes</h3>
+  </div>
+  <div class="col text-right">
+    <p><%= link_to 'New scene', new_story_scene_path(story), class: 'btn btn-primary' %></p>
+  </div>
+</div>
+
+<ul class="list-group">
+  <% if scenes.count == 0 %>
+    <li class="list-group-item">
+      No scenes yet.&nbsp;<%= link_to 'Add a new scene', new_story_scene_path(story) %>
+    </li>
+  <% end %>
+  <% scenes.each do |scene| %>
+    <li class="list-group-item align-items-start">
+      <div>
+        <span class="mr-1 text-muted"><%= scene.order %></span>
+      </div>
+      <div class="col">
+        <%= link_to scene, story_scene_path(story, scene) %>
+        <% if scene.tags.count > 0 %>
+          <div class="small tags"><%= scene.tags.order(:name).join(', ') %></div>
+        <% end %>
+      </div>
+      <div>
+        <ul class="list-inline">
+          <li class="list-inline-item"><%= link_to story_scene_rp_path(story, scene) do %><%= icon('commenting') %><% end %></li>
+          <li class="list-inline-item"><%= link_to edit_story_scene_path(story, scene) do %><%= icon('edit') %><% end %></li>
+          <li class="list-inline-item">
+            <%= link_to story_scene_path(story, scene), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= icon('trash') %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+</ul>

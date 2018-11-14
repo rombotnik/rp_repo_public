@@ -1,0 +1,47 @@
+<div class="row mb-3">
+  <div class="col">
+    <h1>Characters</h1>
+  </div>
+  <div class="col text-right">
+    <p><%= link_to 'New character', new_character_path, class: 'btn btn-primary' %></p>
+  </div>
+</div>
+<table class="table js-dataTable">
+  <thead>
+    <tr>
+      <th>Modified</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>User</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @characters.each do |character| %>
+      <tr>
+        <td data-sort="<%= character.updated_at %>" class="text-muted">
+          <%= time_ago_in_words(character.updated_at) %> ago
+        </td>
+        <td>
+          <%= link_to character.name, character_path(character) %>
+          <% if character.tags.count > 0 %>
+            <div class="small tags"><%= character.tags.order(:name).join(', ') %></div>
+          <% end %>
+        </td>
+        <td><%= character.gender %></td>
+        <td><%= character.user %></td>
+        <td>
+          <ul class="list-inline">
+            <li class="list-inline-item"><%= link_to edit_character_path(character) do %><%= icon('edit') %><% end %></li>
+            <li class="list-inline-item">
+              <%= link_to character, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= icon('trash') %>
+              <% end %>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

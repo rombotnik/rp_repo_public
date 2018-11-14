@@ -1,0 +1,33 @@
+<% if include_wrapper %>
+<div class="js-rp-post post mb-3" data-id="<%= post.id %>" data-user-id="<%= post.user.id %>">
+<% end %>
+  <header>
+    <ul class="list-inline mb-0">
+      <li class="list-inline-item">
+        <small><strong><%= post.user %></strong></small>
+      </li>
+      <li class="list-inline-item">
+        <small class="text-muted"><%= post.created_at.to_s(:time_only_today) %> <% if post.created_at != post.updated_at %>(edited)<% end %></small>
+      </li>
+      <li class="list-inline-item post-edit">
+        <small>
+          <%= link_to '#', class: 'js-rp-post-edit' do %>
+            <%= icon('edit') %>
+          <% end %>
+        </small>
+      </li>
+      <li class="list-inline-item post-delete">
+        <small>
+          <%= link_to '#', class: 'js-rp-post-delete', data: { confirm: 'Are you sure?' } do %>
+            <%= icon('trash') %>
+          <% end %>
+        </small>
+      </li>
+    </ul>
+  </header>
+  <div class="quarantine quarantine_rp js-rp-post-body">
+    <%= sanitize post.body %>
+  </div>
+<% if include_wrapper %>
+</div>
+<% end %>

@@ -1,0 +1,32 @@
+.rp-window {
+  overflow: auto;
+  padding-top: 20px;
+  height: 100%;
+}
+
+.rp-window-header {
+  border-bottom: 1px $input-border-color solid;
+}
+
+.rp-window-footer {
+  border-top: 1px $input-border-color solid;
+  padding: 20px 0;
+}
+
+.rp-window-typing-state {
+  padding: 5px 0;
+  height: 26px;
+}
+
+.editing {
+  background-color: darken($brand-primary, 25%);
+}
+
+.rp-help-text {
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.rp-help-text_visible {
+  opacity: 1;
+}

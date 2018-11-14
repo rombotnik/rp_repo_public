@@ -1,0 +1,45 @@
+<div class="row mb-3">
+  <div class="col">
+    <h1>Stories</h1>
+  </div>
+  <div class="col text-right">
+    <p><%= link_to 'New story', new_story_path, class: 'btn btn-primary' %></p>
+  </div>
+</div>
+
+<table class="table js-dataTable">
+  <thead>
+    <tr>
+      <th>Modified</th>
+      <th>Story title</th>
+      <th>Genre</th>
+      <th>Characters</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stories.each do |story| %>
+      <tr>
+        <td data-sort="<%= story.updated_at %>" class="text-muted">
+          <%= time_ago_in_words(story.updated_at) %> ago
+        </td>
+        <td>
+          <%= link_to story.title, story_path(story) %>
+          <% if story.tags.count > 0 %>
+            <div class="small tags"><%= story.tags.order(:name).join(', ') %></div>
+          <% end %>
+        </td>
+        <td><%= story.genre %></td>
+        <td><%= story.character_list %></td>
+        <td>
+          <ul class="list-inline">
+            <li class="list-inline-item"><%= link_to edit_story_path(story) do %><%= icon('edit') %><% end %></li>
+            <li class="list-inline-item">
+              <%= link_to story_path(story), method: :delete, data: { confirm: 'Are you sure you want to archive this story? It will not be visible in the main screen until it is un-archived.' } do %><%= icon('archive') %><% end %>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

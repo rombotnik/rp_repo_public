@@ -1,0 +1,18 @@
+<%= simple_form_for @character do |f| %>
+  <div class="row">
+    <div class="col">
+      <%= f.input :name %>
+    </div>
+    <div class="col-3">
+      <%= f.input :gender, collection: Character::GENDERS, include_blank: false, selected: @character.gender %>
+    </div>
+    <div class="col-3">
+      <%= f.input :user_id, collection: User.all, include_blank: false %>
+    </div>
+  </div>
+  <%= f.input :tag_list, input_html: { value: @character.tag_list.join(', ') }, hint: 'Enter a list of tags separated by commas' %>
+  <ul class="list-inline text-right">
+    <li class="list-inline-item"><%= link_to 'Cancel', 'javascript:history.back()', class: 'mr-2' %></li>
+    <li class="list-inline-item"><%= f.submit class: 'btn btn-primary' %></li>
+  </ul>
+<% end %>

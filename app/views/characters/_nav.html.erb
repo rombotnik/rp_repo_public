@@ -1,0 +1,5 @@
+<nav class="breadcrumb">
+  <%= link_to 'Characters', characters_path, class: 'breadcrumb-item' %>
+  <%= link_to character, character, class: 'breadcrumb-item' if character %>
+  <span class="breadcrumb-item active"><%= page_title %></span>
+</nav>

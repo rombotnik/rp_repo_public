@@ -1,0 +1,5 @@
+<nav class="breadcrumb">
+  <%= link_to 'Stories', stories_path, class: 'breadcrumb-item' %>
+  <%= link_to story, story, class: 'breadcrumb-item' if story %>
+  <span class="breadcrumb-item active"><%= page_title %></span>
+</nav>

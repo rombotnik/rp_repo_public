@@ -1,0 +1,12 @@
+<%= simple_form_for @idea do |f| %>
+  <div class="row mb-4">
+    <div class="col">
+      <%= f.label :body %>
+      <%= f.trix_editor :body %>
+    </div>
+  </div>
+  <ul class="list-inline text-right">
+    <li class="list-inline-item"><%= link_to 'Cancel', 'javascript:history.back()', class: 'mr-2' %></li>
+    <li class="list-inline-item"><%= f.submit class: 'btn btn-primary' %></li>
+  </ul>
+<% end %>

@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-7">
+    <div class="card">
+      <div class="card-block">
+        <h2><%= @story.title %></h2>
+        <ul class="list-inline">
+          <% if @story.archived? %>
+            <li class="list-inline-item">
+              Archived&nbsp;&nbsp;&mdash;
+            </li>
+          <% end %>
+          <li class="list-inline-item">
+            Last updated on <%= @story.updated_at.strftime('%B %-d, %Y at %l:%M%P') %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to edit_story_path(@story) do %><%= icon('edit') %><% end %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to story_path(@story), method: :delete, data: { confirm: 'Are you sure you want to archive this story? It will not be visible in the main screen until it is un-archived.' } do %><%= icon('archive') %><% end %>
+          </li>
+        </ul>
+        <div class="quarantine">
+          <%= sanitize @story.description %>
+        </div>
+      </div>
+      <% if @story.tags.count > 0 %>
+        <div class="card-footer">
+          <div class="small tags"><%= @story.tags.order(:name).join(', ') %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-5 hidden-sm-down">
+    <div class="card">
+      <div class="card-block">
+        <%= render 'stat', name: 'Genre', value: @story.genre %>
+        <%= render 'stat', name: 'Characters', value: @story.character_list if @story.characters.count > 0 %>
+        <div class="mb-3"></div>
+        <%= render 'stat', name: 'Scenes', value: @story.scenes.count %>
+        <%= render 'stat', name: 'Posts', value: @story.posts.count %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-7 mt-5">
+    <%= render 'scenes/list', story: @story, scenes: @scenes %>
+  </div>
+  <div class="col-md-5 mt-5">
+    <%= render 'notes/list', resource: @story, notes: @story.notes %>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+.quarantine {
+  font-size: 1.15rem;
+
+  line-height: 1.35;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  letter-spacing: 0;  
+}
+
+.tags {
+  line-height: 1.35;
+  letter-spacing: 0;  
+}
+
+.quarantine_rp {
+  color: $white;
+}
+
+.quarantine_rp pre {
+  color: $white;
+}
+
+.quarantine p {
+  margin: 0;
+}

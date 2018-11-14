@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+    <%= render 'nav', page_title: @character.name, character: false %>
+    <div class="card mb-4">
+      <div class="card-block">
+        <h2><%= @character.name %></h2>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            Last updated on <%= @character.updated_at.strftime('%B %-d, %Y at %l:%M%P') %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to [:edit, @character] do %><%= icon('edit') %><% end %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to @character, method: :delete, data: { confirm: 'Are you sure?' } do %><%= icon('trash') %><% end %>
+          </li>
+        </ul>
+        <div class="row">
+          <div class="col-sm-2"><strong>Gender</strong></div>
+          <div class="col">TODO</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2"><strong>User</strong></div>
+          <div class="col"><%= @character.user %></div>
+        </div>
+      </div>
+      <% if @character.tags.count > 0 %>
+        <div class="card-footer">
+          <div class="small tags"><%= @character.tags.order(:name).join(', ') %></div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= render 'stories/list', stories: @character.stories %>
+      </div>
+      <div class="col">
+        <%= render 'notes/list', resource: @character, notes: @character.notes %>
+      </div>
+    </div>
+  </div>
+</div>

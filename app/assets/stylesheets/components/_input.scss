@@ -1,0 +1,16 @@
+.input-nested {
+  position: relative;
+  display: flex;
+}
+
+.input-nested_control {
+  flex: 1;
+}
+
+.input-nested_icon {
+  padding: 5px 10px;
+}
+
+label.boolean {
+  margin-bottom: 0;
+}

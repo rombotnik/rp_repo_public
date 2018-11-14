@@ -1,0 +1,25 @@
+<div class="row mt-5">
+  <div class="col-sm-4 offset-sm-4">
+    <h1 class="mb-4 text-center">
+      <%= image_tag 'dragon', class: 'logo-lg' %>
+    </h1>
+    <div class="mb-3">
+      <h2 class="text-center">RP Repo</h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.input :email, required: false, autofocus: true %>
+        <%= f.input :password, required: false %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+        <div class="text-center">
+          <%= f.button :submit, "Log in", class: 'btn btn-primary btn-lg' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= render "devise/shared/links" %>
+      <div class="small text-muted">
+        Icon by <%= link_to 'Freepik', 'http://www.freepik.com' %> from <%= link_to 'Flaticon.com', 'https://www.flaticon.com' %> &ndash; <%= link_to 'CC 3.0 BY', 'http://creativecommons.org/licenses/by/3.0/', target: '_blank' %>
+      </div>
+    </div>
+  </div>
+</div>

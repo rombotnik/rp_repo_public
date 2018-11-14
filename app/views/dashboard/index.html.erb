@@ -1,0 +1,38 @@
+<%= high_chart_globals @chart_globals %>
+
+<% if @latest_scene %>
+  <div class="card-deck mb-4">
+    <div class="card">
+      <div class="card-header">
+        Recent RP
+      </div>
+      <div class="card-block">
+        <h4><%= @latest_story.title %></h4>
+        <p class="lead"><%= @latest_scene.title %></p>
+        <div class="mt-4">
+          <%= link_to 'Continue Scene', story_scene_rp_path(@latest_story, @latest_scene), class: 'btn btn-primary' %>
+          <%= link_to 'View Story', @latest_story, class: 'ml-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">Recent post activity</div>
+      <div class="card-block">
+        <%= high_chart('post_counts_chart', @post_chart) %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 hidden-sm-down">
+    <div class="card">
+      <div class="card-header">Genre breakdown</div>
+      <div class="card-block">
+        <%= high_chart('genre_chart', @genre_chart) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.post {
+  
+}
+
+.post-edit, .post-delete {
+  opacity: 0;
+  transition: opacity .15s;
+}
+
+.post:hover .post-edit,
+.post:hover .post-delete {
+  opacity: 1;
+}

@@ -1,0 +1,12 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name, hint: 'Display name seen by other users' %>
+  <%= f.input :email %>
+  <% if @user.new_record? %>
+    <%= f.input :password, required: true %>
+    <%= f.input :password_confirmation, required: true %>
+  <% end %>
+  <ul class="list-inline text-right">
+    <li class="list-inline-item"><%= link_to 'Cancel', 'javascript:history.back()', class: 'mr-2' %></li>
+    <li class="list-inline-item"><%= f.submit class: 'btn btn-primary' %></li>
+  </ul>
+<% end %>

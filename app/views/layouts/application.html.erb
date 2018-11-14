@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RP Repo</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= render 'application/favicon' %>
+  </head>
+
+  <body>
+
+    <%= render 'layouts/header' if current_user %>
+
+    <div class="container">
+      <% if notice %>
+        <div class="alert alert-success alert-dismissible fade show">
+          <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+          </button>
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert alert-danger alert-dismissible fade show">
+          <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+          </button>
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+    <%= render 'layouts/footer' if current_user %>
+  </body>
+</html>

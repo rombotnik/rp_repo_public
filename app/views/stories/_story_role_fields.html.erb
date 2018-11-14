@@ -1,0 +1,12 @@
+<div class="nested-fields">
+    <div class="input-nested">
+      <div class="input-nested_control">
+        <%= f.input :character_id, as: :select, collection: Character.all, label: false, include_blank: false %>
+      </div>
+      <div class="input-nested_icon">
+        <%= link_to_remove_association f do %>
+          <%= icon('times') %>
+        <% end %>
+      </div>
+    </div>
+</div>

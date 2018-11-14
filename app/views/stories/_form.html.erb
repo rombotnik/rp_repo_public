@@ -1,0 +1,29 @@
+<%= simple_form_for @story do |f| %>
+  <div class="row">
+    <div class="col">
+      <%= f.input :title %>
+      <%= f.input :tag_list, input_html: { value: @story.tag_list.join(', ') }, hint: 'Enter a list of tags separated by commas' %>
+      <% unless @story.new_record? %>
+        <%= f.input :archived, as: :boolean, hint: 'Archived stories will not be displayed in the main list' %>
+      <% end %>
+    </div>
+    <div class="col">
+      <%= f.input :genre_id, collection: Genre.all, include_blank: false %>
+      <%= f.label :characters %>
+      <%= f.simple_fields_for :story_roles do |story_role| %>
+        <%= render 'story_role_fields', f: story_role %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'Add character', f, :story_roles %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.trix_editor :description %>
+  </div>
+  <ul class="list-inline mt-4 text-right">
+    <li class="list-inline-item"><%= link_to 'Cancel', 'javascript:history.back()', class: 'mr-2' %></li>
+    <li class="list-inline-item"><%= f.submit class: 'btn btn-primary' %></li>
+  </ul>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+    <%= render 'stories/nav', story: @story, page_title: @scene.title %>
+    <header class="mb-4">
+      <h3><%= @scene.title %></h3>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          Last updated on <%= @scene.updated_at.strftime('%B %-d, %Y at %l:%M%P') %>
+        </li>
+        <li class="list-inline-item"><%= link_to story_scene_rp_path(@story, @scene) do %><%= icon('commenting') %><% end %></li>
+      </ul>
+    </header>
+    <div class="quarantine quarantine_rp">
+      <% @scene.posts.each do |post| %>
+        <div class="mb-4">
+          <%= sanitize post.body %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
