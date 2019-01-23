@@ -1,6 +1,6 @@
 # RP Repo
 
-A simple hosting site for play-by-post roleplays.
+A simple hosting site for play-by-post roleplays. Made by me!
 
 ## Project setup
 
