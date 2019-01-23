@@ -2,6 +2,16 @@
 
 A simple hosting site for play-by-post roleplays. Made by me!
 
+## Demo
+Check out the demo at https://repodemo.herokuapp.com/.
+
+Please only post nice things on the demo, I don’t want to monitor it ;)
+
+Log in with one of the following test accounts:
+- fighter@example.com / password
+- wizard@example.com / password
+- rogue@example.com / password
+
 ## Project setup
 
 1. `gem install bundler`
