@@ -23,3 +23,9 @@ Push to `develop` branch on GitHub. Branch off features into `feature/name-of-fe
 ## Deploying
 
 Deploys happen automatically to Heroku when the `master` branch is updated. [More info](https://dashboard.heroku.com/apps/rp-repo/deploy/github)
+
+For a fresh deploy, you will need to add two addons to Heroku:
+- Heroku Postgres (free tier)
+- Heroku Redis (free tier)
+
+Remember to run `rake db:migrate` after deploying!
